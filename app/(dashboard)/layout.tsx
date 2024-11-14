@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { Sidebar } from './_components/sidebar';
-import { OrgSidebar } from './_components/org-sidebar';
+import { OrganizationSidebar } from './_components/organization-sidebar';
 import { Navbar } from './_components/navbar';
 
 
@@ -13,10 +13,10 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     <main className='h-full'>
       <Sidebar />
       <div className='h-full pl-[60px]'>
-        <div className="h-full flex gap-x-3">
-          <OrgSidebar/>
-          <div className="h-full flex-1">
-            <Navbar/>
+        <div className='h-full flex gap-x-3'>
+          <OrganizationSidebar />
+          <div className='h-full flex-1'>
+            <Navbar />
             {children}
           </div>
         </div>

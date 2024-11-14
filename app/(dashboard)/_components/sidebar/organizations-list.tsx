@@ -10,7 +10,7 @@ export const OrganizationsList = () => {
 
   if (!userMemberships.data?.length) return null;
   return (
-    <ul>
+    <ul className='space-y-4'>
       {userMemberships.data?.map((membership) => (
         <OrganizationItem
           key={membership.organization.id}
