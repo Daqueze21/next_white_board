@@ -1,16 +1,30 @@
 'use client';
 
-import { SignInButton} from '@clerk/nextjs';
+import { SignInButton, useOrganization } from '@clerk/nextjs';
 import { Authenticated, Unauthenticated } from 'convex/react';
+import { EmptyOrg } from './_components/empty-org';
+import { BoardList } from './_components/board-list';
 
-export default function Home() {
+interface DashboardPageProps {
+  searchParams: {
+    search?: string;
+    favorites: string;
+  };
+}
+
+export default function DashboardPage({searchParams}:DashboardPageProps) {
+  const organization = useOrganization();
   return (
-    <main className='h-full'>
+    <main className='h-[calc(100%-80px)] flex-1 p-6 bg-amber-300 '>
       <Unauthenticated>
         <SignInButton />
       </Unauthenticated>
       <Authenticated>
-        <div className='flex flex-col gap-y-4'>authenticated user</div>
+        {!organization ? (
+          <EmptyOrg />
+        ) : (
+          <BoardList organizationId={organization.id} query={searchParams} />
+        )}
       </Authenticated>
     </main>
   );

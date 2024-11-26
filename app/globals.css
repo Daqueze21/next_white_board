@@ -11,6 +11,13 @@ body {
     text-wrap: balance;
   }
 }
+html {
+  @apply h-full;
+}
+
+body {
+  @apply h-full;
+}
 
 @layer base {
   :root {
