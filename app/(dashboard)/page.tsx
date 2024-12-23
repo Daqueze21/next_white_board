@@ -13,9 +13,9 @@ interface DashboardPageProps {
 }
 
 export default function DashboardPage({searchParams}:DashboardPageProps) {
-  const organization = useOrganization();
+  const {organization} = useOrganization();
   return (
-    <main className='h-[calc(100%-80px)] flex-1 p-6 bg-amber-300 '>
+    <main className='h-[calc(100%-80px)] flex-1 p-6 '>
       <Unauthenticated>
         <SignInButton />
       </Unauthenticated>
