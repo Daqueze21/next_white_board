@@ -33,7 +33,7 @@ export const CardFooter = ({
         disabled={disabled}
         onClick={onClick}>
         <Star
-          className={cn('h-4 w-4', isFavorite && 'fill-blue-600 text-blue-400')}
+          className={cn('h-4 w-4', isFavorite && 'fill-blue-600 text-blue-600')}
         />
       </button>
     </div>

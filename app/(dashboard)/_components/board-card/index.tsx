@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Overlay } from './overlay';
 import { useAuth } from '@clerk/nextjs';
+import { Skeleton } from '@/components/ui/skeleton';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import { CardFooter } from './cardFooter';
@@ -54,3 +55,12 @@ export const BoardCard = ({
     </Link>
   );
 };
+
+
+BoardCard.Skeleton = function BoardCardSkeleton()  {
+  return (
+    <div className='aspect-[100/127] overflow-hidden rounded-lg'>
+      <Skeleton className='h-full w-full'/>
+    </div>
+  );
+}

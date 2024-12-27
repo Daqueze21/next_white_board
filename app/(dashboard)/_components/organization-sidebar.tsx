@@ -44,7 +44,7 @@ export const OrganizationSidebar = () => {
           size='lg'
           variant={favorites ? 'secondary' : 'ghost'}
           className='w-full justify-start px-2 font-normal'>
-          <Link href={{ pathname: '/', query: { favorites: true } }}>
+          <Link href={{ pathname: '/', query: { favorites: false } }}>
             <Star className='h-4 w-4 mr-2' />
             Favorite boards
           </Link>
