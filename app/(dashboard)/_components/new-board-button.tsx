@@ -22,7 +22,7 @@ export const NewBoardButton = ({
       title: 'Untitled',
     })
       .then((id) => {
-        toast.success('new board created!');
+        toast.success('New board was created!');
         // TODO: Redirect to board|{id}
       })
       .catch(() =>
