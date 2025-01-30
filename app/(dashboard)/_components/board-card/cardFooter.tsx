@@ -19,6 +19,14 @@ export const CardFooter = ({
   disabled,
   isFavorite,
 }: CardFooterProps) => {
+
+  const handleClick = ( event:React.MouseEvent<HTMLButtonElement, MouseEvent> ) =>{
+    event.stopPropagation();
+    event.preventDefault();
+
+    onClick();
+  }
+
   return (
     <div className='relative p-3 bg-white'>
       <p className='max-w-[calc(100%-20px)] truncate text-[13px]'>{title}</p>
@@ -31,7 +39,7 @@ export const CardFooter = ({
           disabled && 'cursor-not-allowed'
         )}
         disabled={disabled}
-        onClick={onClick}>
+        onClick={handleClick}>
         <Star
           className={cn('h-4 w-4', isFavorite && 'fill-blue-600 text-blue-600')}
         />

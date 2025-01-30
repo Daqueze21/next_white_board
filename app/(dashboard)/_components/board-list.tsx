@@ -63,7 +63,7 @@ export const BoardList = ({ organizationId, query }: BoardListProps) => {
             authorName={board.authorName}
             createdAt={board._creationTime}
             organizationId={board.organizationId}
-            isFavorite={false}
+            isFavorite={board.isFavorite}
           />
         ))}
       </div>

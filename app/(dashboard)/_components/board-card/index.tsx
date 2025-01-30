@@ -2,14 +2,19 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Overlay } from './overlay';
+import { toast } from 'sonner';
+
 import { useAuth } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { CardFooter } from './cardFooter';
 import { Actions } from '@/components/actions';
-import { Ellipsis, MoreHorizontal } from 'lucide-react';
+import { MoreHorizontal } from 'lucide-react';
+import { useApiMutation } from '@/hooks/use-api-mutation';
+import { api } from '@/convex/_generated/api';
+
+import { Overlay } from './overlay';
+import { CardFooter } from './cardFooter';
 
 interface BoardCardProps {
   id: string;
@@ -38,6 +43,26 @@ export const BoardCard = ({
   const authorLabel = userId === authorId ? 'You' : authorId;
   const createdAtLabel = dayjs(createdAt).fromNow();
 
+  const { mutate: onFavorite, pending: pendingFavorite } = useApiMutation(
+    api.board.favorite
+  );
+
+  const { mutate: onUnfavorite, pending: pendingUnfavorite } = useApiMutation(
+    api.board.unfavorite
+  );
+
+  const toggleFavorite = () => {
+    if (isFavorite) {
+      onUnfavorite({ id }).catch(() => toast.error('Failed to unfavorite'));
+      toast.success('Board removed from favorite');
+    } else {
+      onFavorite({ id, organizationId }).catch(() =>
+        toast.error('Failed to unfavorite')
+      );
+      toast.success('Board added to favorite');
+    }
+  };
+
   return (
     <Link href={`/board/${id}`}>
       <div className='flex flex-col justify-between group aspect-[100/127] overflow-hidden border rounded-lg'>
@@ -55,8 +80,8 @@ export const BoardCard = ({
           title={title}
           authorLabel={authorLabel}
           createdAtLabel={createdAtLabel}
-          onClick={() => {}}
-          disabled={false}
+          onClick={toggleFavorite}
+          disabled={pendingFavorite || pendingUnfavorite}
           isFavorite={isFavorite}
         />
       </div>
