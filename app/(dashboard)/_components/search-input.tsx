@@ -17,8 +17,6 @@ export const SearchInput = () => {
   };
 
   useEffect(() => {
-    console.log('debounced', debouncedSearchTerm);
-
     const url = qs.stringifyUrl(
       {
         url: '/',
