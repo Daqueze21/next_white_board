@@ -12,6 +12,8 @@ interface ConvexClientProviderProps {
 
 const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL!;
 const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!;
+console.log("🚀 ~ publishableKey:", publishableKey)
+
 
 const convex = new ConvexReactClient(convexUrl);
 
