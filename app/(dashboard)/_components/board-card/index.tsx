@@ -8,7 +8,7 @@ import { useAuth } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { Actions } from '@/components/actions';
+import {ActionsDropdownMenu } from '@/components/actionsDropdownMenu';
 import { MoreHorizontal } from 'lucide-react';
 import { useApiMutation } from '@/hooks/use-api-mutation';
 import { api } from '@/convex/_generated/api';
@@ -70,11 +70,11 @@ export const BoardCard = ({
           <Image src={imageUrl} alt={title} className='object-fit' fill />
           <Overlay />
 
-          <Actions side='right' id={id} title={title}>
+          <ActionsDropdownMenu side='right' id={id} title={title}>
             <button className='absolute top-1 right-1 opacity-0 group-hover:opacity-100 transition-opacity px-3 py-2 outline-none'>
               <MoreHorizontal className='text-white opacity-75 hover:opacity-100 transition-opacity' />
             </button>
-          </Actions>
+          </ActionsDropdownMenu>
         </div>
         <CardFooter
           title={title}

@@ -7,7 +7,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu';
 import { Link2, Pencil, Trash2 } from 'lucide-react';
 import { useApiMutation } from '@/hooks/use-api-mutation';
@@ -16,7 +15,7 @@ import { ConfirmModal } from './confirm-modal';
 import { Button } from '@/components/ui/button';
 import { useRenameModal } from '@/store/use-rename-modal';
 
-interface ActionsProps {
+interface ActionsDropdownMenuProps {
   children: React.ReactNode;
   side?: DropdownMenuContentProps['side'];
   sideOffset?: DropdownMenuContentProps['sideOffset'];
@@ -24,13 +23,13 @@ interface ActionsProps {
   title: string;
 }
 
-export const Actions = ({
+export const ActionsDropdownMenu = ({
   children,
   side,
   sideOffset,
   id,
   title,
-}: ActionsProps) => {
+}: ActionsDropdownMenuProps) => {
   const { mutate, pending } = useApiMutation(api.board.removeBoard);
   const { onOpen } = useRenameModal();
 
@@ -49,7 +48,7 @@ export const Actions = ({
 
   const onRenameBoard = () => {
     onOpen(id, title);
-  }
+  };
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
@@ -84,3 +83,4 @@ export const Actions = ({
     </DropdownMenu>
   );
 };
+
