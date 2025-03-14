@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionsDropdownMenu } from '@/components/actionsDropdownMenu';
+import { ActionsDropdownMenu } from '@/components/actions-dropdown-menu';
 import { Hint } from '@/components/hint';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';

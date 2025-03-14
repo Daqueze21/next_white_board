@@ -1,6 +1,8 @@
 // Define Liveblocks types for your application
 // https://liveblocks.io/docs/api-reference/liveblocks-react#Typing-your-data
 
+import { createRoomContext } from "@liveblocks/react";
+import { createClient } from '@liveblocks/client';
 declare global {
   interface Liveblocks {
     // Each user's Presence, for useMyPresence, useOthers, etc.
@@ -46,5 +48,71 @@ declare global {
     };
   }
 }
+
+const client = createClient({
+  publicApiKey:
+    'pk_dev_UNDP4Xxi8hU64y2Zwgmj7uv_zcVISICUNBufafGYa84Imzik5pdVGRjG28ibDvdh',
+  // authEndpoint: "/api/auth",
+  // throttle: 100,
+});
+
+// Presence represents the properties that will exist on every User in the Room
+// and that will automatically be kept in sync. Accessible through the
+// `user.presence` property. Must be JSON-serializable.
+type Presence = {
+  // cursor: { x: number, y: number } | null,
+  // ...
+};
+
+
+// Room-level hooks, use inside `RoomProvider`
+export const {
+  suspense: {
+    RoomProvider,
+    useRoom,
+    useMyPresence,
+    useUpdateMyPresence,
+    useSelf,
+    useOthers,
+    useOthersMapped,
+    useOthersListener,
+    useOthersConnectionIds,
+    useOther,
+    useBroadcastEvent,
+    useEventListener,
+    useErrorListener,
+    useStorage,
+    useObject,
+    useMap,
+    useList,
+    useBatch,
+    useHistory,
+    useUndo,
+    useRedo,
+    useCanUndo,
+    useCanRedo,
+    useMutation,
+    useStatus,
+    useLostConnectionListener,
+    useThreads,
+    useCreateThread,
+    useEditThreadMetadata,
+    useCreateComment,
+    useEditComment,
+    useDeleteComment,
+    useAddReaction,
+    useRemoveReaction,
+    useThreadSubscription,
+    useMarkThreadAsRead,
+    useRoomNotificationSettings,
+    useUpdateRoomNotificationSettings,
+
+    // These hooks can be exported from either context
+    // useUser,
+    // useRoomInfo
+  },
+} = createRoomContext<Presence, Storage>(
+  client,
+);
 
 export {};

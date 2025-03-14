@@ -8,7 +8,7 @@ import { useAuth } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import {ActionsDropdownMenu } from '@/components/actionsDropdownMenu';
+import {ActionsDropdownMenu } from '@/components/actions-dropdown-menu';
 import { MoreHorizontal } from 'lucide-react';
 import { useApiMutation } from '@/hooks/use-api-mutation';
 import { api } from '@/convex/_generated/api';

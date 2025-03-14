@@ -1,5 +1,5 @@
 import { Loader } from 'lucide-react';
-import { ParticipantsListSkeleton } from './participantsList';
+import { ParticipantsListSkeleton } from './participants-list';
 import { ToolbarSkeleton } from './toolbar';
 import { InfoSkeleton } from './info';
 
